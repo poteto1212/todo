@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block header %}
+<h1>Todoリスト一覧</h1>
+{% endblock header %}
+
+{% block content %}
+    {% for list in object_list %}
+    <p>{{list.title}}</p>
+    {% endfor %}
+{% endblock content %}
