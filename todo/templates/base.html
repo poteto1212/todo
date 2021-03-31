@@ -1,9 +1,11 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
 <html>
     <head>
         <title>ToDoリスト</title>
     </head>
     <body>
-        <header>
+        <header class='headstyle'>
         <div class='header'>
         {% block header %}
         {% endblock header %}
