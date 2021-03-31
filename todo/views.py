@@ -3,8 +3,8 @@ from .models import TodoModel
 from django.views.generic import ListView,DetailView,CreateView,DeleteView,UpdateView
 from django.urls import reverse_lazy
 
-def home():
-    return render('templates/home.html')
+def home(request):
+    return render(request,'home.html')
     
 class TodoView(ListView):
     model=TodoModel

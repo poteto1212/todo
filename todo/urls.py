@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import TodoView,Detail,TodoCreateView,TodoDelete,TodoUpdateView
-
+from .import views
 urlpatterns=[
+    path('',views.home,name='home'),
     path('list/',TodoView.as_view(),name='list'),
     path('detail/<int:pk>/',Detail.as_view(),name='detail'),
     path('create/',TodoCreateView.as_view(),name='create'),
