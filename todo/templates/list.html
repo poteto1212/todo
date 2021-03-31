@@ -6,5 +6,11 @@
 {% block content %}
     {% for list in object_list %}
     <p>{{list.title}}</p>
+    <ul>
+        <li><a href='{% url "detail" list.pk %}'>詳細画面へ</a></li><!--list.pkでリンクのpkを自動取得できる-->
+        <li><a href='{% url "update" list.pk %}'>編集画面へ</a></li>
+        <li><a href='{% url "delete" list.pk %}'>削除画面へ</a></li>
+    </ul>
     {% endfor %}
+    <p><a href='{% url "create" %}'>新規作成画面へ</a></p>
 {% endblock content %}

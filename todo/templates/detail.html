@@ -8,5 +8,9 @@
 <p>タイトル：{{object.title}}</p>
 <p>Todoの内容：{{object.content}}</p>
 <p>担当者:{{object.pic}}</p>
+
+<a href='{% url "list" %}'>一覧に戻る</a>
 {% endblock %}
+
+
 <!--DetailViewではId指定する必要ない-->
