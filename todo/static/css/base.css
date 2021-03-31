@@ -21,3 +21,11 @@ body{
     min-height:25%;
    
 }
+
+.route li{
+    list-style: none;
+    float:left;
+    padding:0px  60px;
+    font-size:200%;
+    
+}

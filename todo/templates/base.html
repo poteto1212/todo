@@ -9,6 +9,10 @@
         <div class='header'>
         {% block header %}
         {% endblock header %}
+        <ul class='route'>
+            <li><a href='{% url "list" %}'>一覧画面へ</a></li>
+            <li><a href='{% url "home" %}'>ホーム画面に戻る</a></li>
+        </ul>
         </div>
         </header>
         <div class='main'>
