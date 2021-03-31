@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h1>新規Todo投稿画面</h1>
+{% endblock %}
+
+{% block content %}<!--入力情報はformタグ-->
+    <form action="" method="POST">{% csrf_token %}
+    {{form.as_p}}<!--form.as_pでフォーム表示-->
+    <input type="submit" value="投稿する">
+    </form>
+{% endblock %}

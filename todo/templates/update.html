@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h1>Todoの修正</h1>
+{% endblock header %}
+
+{% block content %}
+    <form action='' method='POST'>{% csrf_token %}
+    {{form.as_p}}
+    <input type='submit' value='Todoの修正'>
+    </form>
+{% endblock content %}
