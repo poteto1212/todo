@@ -4,22 +4,20 @@ body{
 
 
 .headstyle{
+    min-height:15%;
     background-color:#16F6D0;
     margin:0px;
     padding:0px;
 }
 
 .main{
-    min-height:40vh;/*高さの最小値を指定する*/
-    position: relative;/*相対位置*/
-    
+    min-height:60%;/*高さの最小値を指定する*/
+    position:relative;/*相対位置*/
 }
 
 .footer{
     background-color:#0AFF37 ;
-    width: 100%;
-    padding: 50px 0;
-    position:absolute;/*絶対位置*/
-    bottom:0;
-    
+    width:100%;
+    min-height:25%;
+   
 }

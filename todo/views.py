@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 
 def home():
     return render('templates/home.html')
-
+    
 class TodoView(ListView):
     model=TodoModel
     template_name='list.html'
