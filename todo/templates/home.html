@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% block header %}
 <h1>Todoアプリホーム画面</h1>
 {% endblock header %}
 
 {% block content %}
+<div class="backtodo" style="background-img: url(static/css/todohome.jpg);">
+    <img src="{% static 'css/todohome.jpg' %}">
+</div>
 {% endblock content %}
