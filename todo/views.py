@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import TodoModel
+from .models import TodoModel,SubjectModel
 from django.views.generic import ListView,DetailView,CreateView,DeleteView,UpdateView
 from django.urls import reverse_lazy
 
@@ -11,8 +11,11 @@ class TodoView(ListView):
     template_name='list.html'
     
     def get_context_data(self,**kwargs):
+        #contextは辞書型配列
         context=super(TodoView,self).get_context_data(**kwargs)
-        subjects=subjects.object.all()
+        subjects=SubjectModel.objects.all()
+        context['subjects']=subjects
+        return context
 
 class Detail(DetailView):
     model=TodoModel

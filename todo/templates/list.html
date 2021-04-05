@@ -8,7 +8,12 @@
     <legend>科目選択</legend>
     
     <div>
-        <input type="submit" name="filter" >送信
+        <select>
+        {% for subject in subjects %}
+        <option value="{{subject.id}}">{{subject.subjects}}</option>
+        {% endfor %}
+        </select>
+        <input type="submit" name="filter" >
     </div>
 </form>
     {% for list in object_list %}
