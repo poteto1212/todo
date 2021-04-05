@@ -4,6 +4,13 @@
 {% endblock header %}
 
 {% block content %}
+<form method="get" action="filter_form">
+    <legend>科目選択</legend>
+    
+    <div>
+        <input type="submit" name="filter" >送信
+    </div>
+</form>
     {% for list in object_list %}
     <p>{{list.title}}</p>
     <ul>

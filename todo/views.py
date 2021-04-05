@@ -9,6 +9,10 @@ def home(request):
 class TodoView(ListView):
     model=TodoModel
     template_name='list.html'
+    
+    def get_context_data(self,**kwargs):
+        context=super(TodoView,self).get_context_data(**kwargs)
+        subjects=subjects.object.all()
 
 class Detail(DetailView):
     model=TodoModel
