@@ -9,14 +9,16 @@
     
     <div>
         <select>
+        <option selected></option>
         {% for subject in subjects %}
-        <option value="{{subject.id}}">{{subject.subjects}}</option>
+        <option>{{subject.subjects}}</option>
         {% endfor %}
         </select>
-        <input type="submit" name="filter" >
+        <input type="submit" name="subjectfilter" >
     </div>
 </form>
-    {% for list in object_list %}
+
+    {% for list in results %}
     <p>{{list.title}}</p>
     <ul>
         <li><a href='{% url "detail" list.pk %}'>詳細画面へ</a></li><!--list.pkでリンクのpkを自動取得できる-->
@@ -25,4 +27,5 @@
     </ul>
     {% endfor %}
     <p><a href='{% url "create" %}'>新規作成画面へ</a></p>
+
 {% endblock content %}
