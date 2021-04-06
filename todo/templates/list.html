@@ -4,21 +4,18 @@
 {% endblock header %}
 
 {% block content %}
-<form method="get" action="filter_form">
+<form method="get" action="" name="filter_form">
     <legend>科目選択</legend>
     
     <div>
-        <select>
-        <option selected></option>
         {% for subject in subjects %}
-        <option>{{subject.subjects}}</option>
+        <input type="checkbox" name="subjectfilter" value="{{subject.subjects}}">{{subject.subjects}}
         {% endfor %}
-        </select>
-        <input type="submit" name="subjectfilter" >
     </div>
 </form>
 
-    {% for list in results %}
+    {% for list in object_list %}
+    <p>{{list.subject.subjects}}</p>
     <p>{{list.title}}</p>
     <ul>
         <li><a href='{% url "detail" list.pk %}'>詳細画面へ</a></li><!--list.pkでリンクのpkを自動取得できる-->
