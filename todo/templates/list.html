@@ -6,6 +6,7 @@
 {% block content %}
 
     <a href='{% url "list" %}'><p>全一覧</p></a>
+    <a href='{% url "create" %}'class="btn btn-primary btn-lg active" role="button" aria-pressed="true">新規作成</a>
     <div>
         <h4>選択してください</h4>
         {% for category in category_list %}<!-- category.pyから取得した辞書(settingsを介して取得)-->
@@ -14,24 +15,29 @@
                     {{category.subjects}}
                 </button>
             </a>
-        {% endfor %}
     </div>
+    {% endfor %}
     <h1 style='clear:both;'></h1>
     {% if category %}
     <h3>カテゴリー:{{category_key}}</h3>
     {% endif %}
     
-    
-    {% for list in object_list %}
-    <p>{{list.title}}</p>
-    <ul>
-        <li><a href='{% url "detail" list.pk %}'>詳細画面へ</a></li><!--list.pkでリンクのpkを自動取得できる-->
-        <li><a href='{% url "update" list.pk %}'>編集画面へ</a></li>
-        <li><a href='{% url "delete" list.pk %}'>削除画面へ</a></li>
-    </ul>
-    {% endfor %}
-    
-    
-    <p><a href='{% url "create" %}'>新規作成画面へ</a></p>
+<div class="card-columns">    
+{% for list in object_list %}   
+<div class="card">
+    <div class="card-header">
+    <h4 class="card-title">{{list.title}}</h4>
+    </div>
+  <div class="card-body">
+    <p class="card-text">
+     {{list.content|linebreaksbr}}
+    </p>
+    <a href="{% url 'detail' list.pk %}" class="btn btn-primary">詳細</a>
+    <a href="{% url 'update' list.pk %}" class="btn btn-primary">編集</a>
+    <a href="{% url 'delete' list.pk %}" class="btn btn-primary">削除</a>
+  </div>
+</div>
+{% endfor %}
+</div>    
 
 {% endblock content %}
