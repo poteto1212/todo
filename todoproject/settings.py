@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todo',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'todo.context.related',#context.pyのrelated関数
             ],
+            'builtins':[ 
+                'bootstrap4.templatetags.bootstrap4',# ここに追加！
+                ],
         },
     },
 ]
