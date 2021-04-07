@@ -10,9 +10,9 @@
         <h4>選択してください</h4>
         {% for category in category_list %}<!-- category.pyから取得した辞書(settingsを介して取得)-->
             <a href='{% url "category" category %}'>
-                <p style='float:left; margin-right:5px;'>
+                <button style='float:left; margin-right:5px; background:deepskyblue; border-radius:5px;'>
                     {{category.subjects}}
-                </p>
+                </button>
             </a>
         {% endfor %}
     </div>
