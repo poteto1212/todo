@@ -4,18 +4,25 @@
 {% endblock header %}
 
 {% block content %}
-<form method="get" action="" name="filter_form">
-    <legend>科目選択</legend>
-    
+
+    <a href='{% url "list" %}'><p>全一覧</p></a>
     <div>
-        {% for subject in subjects %}
-        <input type="checkbox" name="subjectfilter" value="{{subject.subjects}}">{{subject.subjects}}
+        <h4>選択してください</h4>
+        {% for category in category_list %}<!-- category.pyから取得した辞書(settingsを介して取得)-->
+            <a href='{% url "category" category %}'>
+                <p style='float:left; margin-right:5px;'>
+                    {{category.subjects}}
+                </p>
+            </a>
         {% endfor %}
     </div>
-</form>
-
+    <h1 style='clear:both;'></h1>
+    {% if category %}
+    <h3>カテゴリー:{{category_key}}</h3>
+    {% endif %}
+    
+    
     {% for list in object_list %}
-    <p>{{list.subject.subjects}}</p>
     <p>{{list.title}}</p>
     <ul>
         <li><a href='{% url "detail" list.pk %}'>詳細画面へ</a></li><!--list.pkでリンクのpkを自動取得できる-->
@@ -23,6 +30,8 @@
         <li><a href='{% url "delete" list.pk %}'>削除画面へ</a></li>
     </ul>
     {% endfor %}
+    
+    
     <p><a href='{% url "create" %}'>新規作成画面へ</a></p>
 
 {% endblock content %}

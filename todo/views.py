@@ -9,30 +9,27 @@ def home(request):
 class TodoView(ListView):
     model=TodoModel
     template_name='list.html'
-    
-    #get_context_dataのオーバーライド
-    #プルダウンに渡す辞書キーの追加
-    def get_context_data(self,**kwargs):
-        #contextは辞書型配列
-        context=super(TodoView,self).get_context_data(**kwargs)
-        subjects=SubjectModel.objects.all()
-        context['subjects']=subjects
-        return context
-    
-    #絞り込み処理の為のクエリセット
+    #id降順(投稿の新しい順)にTodoを取得する
     def get_queryset(self):
-        #デフォルトではTodoモデルを全取得
-        results=self.model.objects.all()
-        
-        #フォームのGETメソッドから値を取得
-        results_sub=self.request.GET.get('subjectfilter')
-        
-        if results_sub is not None:#GETメソッドから値が取得された時・・・
-            results=results.filter(subject=results_sub)
-        return results
-        
-            
+        queryset=TodoModel.objects.order_by('-id')
+        return queryset
 
+#科目選択カテゴリー
+class CategoryView(ListView):
+    model=TodoModel
+    template_name='list.html'
+    
+    #urlパラメータからのクエリ取得
+    def get_queryset(self):
+        category=SubjectModel.objects.get(subjects=self.kwargs['category'])#urk名
+        queryset=TodoModel.objects.order_by('-id').filter(subject=category)
+        return queryset
+    
+    #受け取ったデータを辞書に   
+    def get_context_data(self,**kwargs):
+        context=super().get_context_data(**kwargs)
+        context['category_key']=self.kwargs['category']
+        return context
 
 class Detail(DetailView):
     model=TodoModel

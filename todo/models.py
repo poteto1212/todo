@@ -5,7 +5,9 @@ class SubjectModel(models.Model):
     
     def __str__(self):
         return self.subjects
-        
+    
+    class Meta:
+        verbose_name="科目カテゴリー"
 
 class TodoModel(models.Model):
     subject=models.ForeignKey('SubjectModel',on_delete=models.CASCADE)
