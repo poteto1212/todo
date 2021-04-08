@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import TodoModel,SubjectModel
+from .models import TodoModel,SubjectModel,Field
 from django.views.generic import ListView,DetailView,CreateView,DeleteView,UpdateView
 from django.urls import reverse_lazy
 
@@ -30,7 +30,23 @@ class CategoryView(ListView):
         context=super().get_context_data(**kwargs)
         context['category_key']=self.kwargs['category']
         return context
-
+        
+        
+class TagView(ListView):
+    model=TodoModel
+    template_name='list.html'
+    #URLパラメータからのクエリ取得
+    def get_queryset(self):
+        tag=Field.objects.get(fields=self.kwargs['tag'])
+        queryset=TodoModel.objects.order_by('-id').filter(field=tag)
+        return queryset
+        
+    #受け取ったデータを辞書に   
+    def get_context_data(self,**kwargs):
+        context=super().get_context_data(**kwargs)
+        context['tag_key']=self.kwargs['tag']
+        return context
+        
 class Detail(DetailView):
     model=TodoModel
     template_name='detail.html'

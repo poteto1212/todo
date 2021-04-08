@@ -9,14 +9,38 @@
     <a href='{% url "create" %}'class="btn btn-primary btn-lg active" role="button" aria-pressed="true">新規作成</a>
     <div>
         <h4>選択してください</h4>
+    </div>
+    <ul class="accordion nav flex-column">
+  <li class="nav-item">
+    <a href="#collapse-menu1" class="nav-link" data-toggle="collapse">作用部位</a>
+    <ul id="collapse-menu1" class="collapse list-unstyled pl-3" data-parent=".accordion">
+        <li>
         {% for category in category_list %}<!-- category.pyから取得した辞書(settingsを介して取得)-->
             <a href='{% url "category" category %}'>
                 <button style='float:left; margin-right:5px; background:deepskyblue; border-radius:5px;'>
                     {{category.subjects}}
                 </button>
             </a>
-    </div>
-    {% endfor %}
+        {% endfor %}
+        </li>
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a href="#collapse-menu2" class="nav-link" data-toggle="collapse">作用機序</a>
+    <ul id="collapse-menu2"  class="collapse list-unstyled pl-3" data-parent=".accordion">
+      <li>
+        {% for tag in tag_list %}
+                <a href='{% url "tag" tag %}'>
+                    <button style='float:left; margin-right:5px; background:deepskyblue; border-radius:5px;'>
+                        {{tag.fields}}
+                    </button>
+                </a>
+        {% endfor %}
+      </li>
+    </ul>
+  </li>
+</ul>
+    
     <h1 style='clear:both;'></h1>
     {% if category %}
     <h3>カテゴリー:{{category_key}}</h3>
@@ -38,6 +62,6 @@
   </div>
 </div>
 {% endfor %}
-</div>    
+</div>
 
 {% endblock content %}
